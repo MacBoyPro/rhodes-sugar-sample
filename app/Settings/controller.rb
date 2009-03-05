@@ -14,6 +14,7 @@ class SettingsController < Rho::RhoController
   end
 
   def do_login
+    puts "PARAMS: #{@params.inspect}"
     if @params['login'] and @params['password']
       success = SyncEngine::login(@params['login'], @params['password'])
     else
