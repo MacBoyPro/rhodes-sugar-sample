@@ -1,6 +1,6 @@
 <script language="JavaScript">
 		
-if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
+if (location.search =='?settings=true') {
     window.location ='/app/Settings';
 }
 
@@ -8,11 +8,11 @@ if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
 
 <div class="toolbar">
 	<h1 id="pageTitle">
-		RhoSugarCRM
+		RhoCRM
 	</h1>
 </div>
 
-<ul id="home" title="RhoSugar" selected="true">
+<ul id="home" title="RhoCRM" selected="true">
 
 	<% if SyncEngine::logged_in > 0 %>		
 
@@ -20,10 +20,10 @@ if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
 		  <!-- disabled for now
 		    <li><a href="Dashboard" target="_self"><img class="menu_icon" src="/public/images/arrowicon.png" alt="dashboard"/>Dashboard</a></li>
       -->
-		  <li><a href="SugarOpportunity" target="_self"><img class="menu_icon" src="/public/images/graphsicon.png"/>Opportunities</a></li>
 		  <li><a href="SugarLead" target="_self"><img class="menu_icon" src="/public/images/boardicon.png"/>Leads</a></li>
 		  <li><a href="SugarContact" target="_self"><img class="menu_icon" src="/public/images/peopleicon.png"/>Contacts</a></li>	
 		  <li><a href="SugarAccount" target="_self"><img class="menu_icon" src="/public/images/buildingicon.png"/>Accounts</a></li>
+		  <li><a href="SugarOpportunity" target="_self"><img class="menu_icon" src="/public/images/graphsicon.png"/>Opportunities</a></li>		
 		  <li><a href="SugarQuote" target="_self"><img class="menu_icon" src="/public/images/calcicon.png"/>Quotes</a></li>		
 		  <li><a href="Mapping/showmypos" target="_self"><img class="menu_icon" src="/public/images/arrowicon.png" alt="mapping"/>GPS Map</a></li>
     <% else %>
@@ -33,10 +33,6 @@ if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
 	          <td><a href="Dashboard" target="_self">Dashboard</a></td>
 	     </tr></table></li>
 	      -->	
-		  <li><table><tr>
-	      <td><img src="/public/images/graphsicon.png"/></td>
-	      <td><a href="SugarOpportunity">Opportunities</a></td>
-	    </tr></table></li>
 	    <li><table><tr>
 				<td><img src="/public/images/boardicon.png"/></td>
 				<td><a href="SugarLead">Leads</a></td>
@@ -49,6 +45,10 @@ if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
 				<td><img src="/public/images/buildingicon.png"/></td>
 				<td><a href="SugarAccount">Accounts</a></td>
 			</tr></table></li>
+		  <li><table><tr>
+	      <td><img src="/public/images/graphsicon.png"/></td>
+	      <td><a href="SugarOpportunity">Opportunities</a></td>
+	    </tr></table></li>
 	    <li><table><tr>
 				<td><img class="menu_icon" src="/public/images/calcicon.png"/></td>
 				<td><a href="SugarQuote">Quotes</a></td>

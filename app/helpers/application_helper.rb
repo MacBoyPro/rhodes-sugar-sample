@@ -38,13 +38,19 @@ module ApplicationHelper
   def display_dollars(value)
     if blank?(value)
       " "
-    else
-      number = "$" + sprintf("%.2f", value)
+    else      
+      # only add commas to pure numbers, otherwise just pass them through
+      check_value = value.to_s
+      if (check_value =~ /[A-Za-z]/)
+        check_value
+      else
+        number = "$" + check_value
       
-      # use a commify algorithm -- http://snippets.dzone.com/tag/commify
-      number.reverse!
-      number.gsub!(/(\d\d\d)(?=\d)(?!\d*\.)/, '\1,')
-      number.reverse!   
+        # use a commify algorithm -- http://snippets.dzone.com/tag/commify
+        number.reverse!
+        number.gsub!(/(\d\d\d)(?=\d)(?!\d*\.)/, '\1,')
+        number.reverse!
+      end 
     end   
   end
   
