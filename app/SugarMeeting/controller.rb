@@ -1,7 +1,10 @@
 require 'rho/rhocontroller'
+require 'helpers/application_helper'
 
 class SugarMeetingController < Rho::RhoController
 
+  include ApplicationHelper
+  
   #GET /SugarMeeting
   def index
     # sort by name in ascending order
