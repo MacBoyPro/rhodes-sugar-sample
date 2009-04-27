@@ -1,3 +1,4 @@
 require 'rho'
+require File.join(__rhoGetCurrentDir(), 'apps','app','config/environment')
 
-Rho::RhoConfig::add_source("SugarQuote", {"url"=>"http://dev.rhosync.rhohub.com/apps/1/sources/21", "source_id"=>21})
+Rho::RhoConfig::add_source("SugarQuote", {"url"=>"#{SYNC_SERVER}SugarQuotes", "source_id"=>21})
