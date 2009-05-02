@@ -1,0 +1,20 @@
+<script language="JavaScript">
+		
+if (location.search =='?settings=true') {
+    window.location ='/app/Settings';
+}
+
+</script>
+
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Bootstrap RhoCRM Sample
+	</h1>
+</div>
+
+<ul id="bootstrap" selected="true" title="Bootstrap RhoCRM Sample">
+	<% if @msg %><li style="color:#ff0000" align="center"><%=@msg%></li><% end %>
+	<p>How would you like to demo RhoCRM?</p>
+	<li><%=link_to "Use offline sample data", :action => :load_local_data%></li>
+	<li><%=link_to "Reset Database", :controller => 'Settings', :action => :reset%></li>
+</ul>

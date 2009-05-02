@@ -14,8 +14,10 @@ if (location.search =='?settings=true') {
 
 <ul id="home" title="RhoCRM" selected="true">
 
-	<% if SyncEngine::logged_in > 0 %>		
 
+	<!--% if SyncEngine::logged_in > 0 %-->
+
+	<li><a href="Bootstrap/load_offline_data" target="_self">Click here to load offline sample data</a></li>
 		<% if System::get_property('platform') == 'APPLE' %>
 		  <!-- disabled for now
 		    <li><a href="Dashboard" target="_self"><img class="menu_icon" src="/public/images/arrowicon.png" alt="dashboard"/>Dashboard</a></li>
@@ -63,8 +65,8 @@ if (location.search =='?settings=true') {
 
 	  <% end %>	
 	  <li><a href="Pages" target="_self">More...</a></li>
-		<li><a href="Settings/logout" target="_self">Logout</a></li>
-	<% else %>
-		<li><a href="Settings/login" target="_self">Login</a></li>
-	 <% end %>
+		<!-- <li><a href="Settings/logout" target="_self">Logout</a></li-->
+	<!--% else %-->
+		<!-- li><a href="Settings/login" target="_self">Login</a></li-->
+	 <!--% end %> -->
 </ul>
