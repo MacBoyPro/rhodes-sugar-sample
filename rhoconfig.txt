@@ -10,6 +10,9 @@ rhobundle_zip_url = nil
 # Optional password to access bundle (usually not required)
 rhobundle_zip_pwd = nil
 
+# Use Full Browser in Blackberry 4.6
+use_bb_full_browser = 0
+
 # Rhodes runtime properties
 MinSeverity  = 1
 LogToOutput = 1
@@ -17,3 +20,4 @@ LogCategories = *
 ExcludeLogCategories =
 KeepTrackOfLastVisitedPage = 0 
 LastVisitedPage = ''
+
