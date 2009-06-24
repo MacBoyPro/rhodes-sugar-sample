@@ -1,4 +1,3 @@
 require 'rho'
-require File.join(__rhoGetCurrentDir(), 'apps','app','config/environment')
 
-Rho::RhoConfig::add_source("SugarCall", {"url"=>"#{SYNC_SERVER}SugarCalls", "source_id"=>9874})
+Rho::RhoConfig::add_source("SugarCall", {"url"=>"#{Rho::RhoConfig.syncserver}SugarCalls", "source_id"=>9874})
