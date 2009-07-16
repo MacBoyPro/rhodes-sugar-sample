@@ -1,5 +1,6 @@
 require 'rho'
 require 'rho/rhocontroller'
+require 'rho/rhoerror'
 
 class SettingsController < Rho::RhoController
   
@@ -22,49 +23,27 @@ class SettingsController < Rho::RhoController
     else
       @msg = @params['error_message']
       if @msg == nil or @msg.length == 0 
-        @msg = RhoError.new(errCode).message
+        @msg = Rho::RhoError.new(errCode).message
       end
-        
-      render :action => :login, :query => {:msg => @msg}
+      WebView.navigate ( url_for :action => :login, :query => {:msg => @msg} )
     end  
   end
 
   def do_login
     if @params['login'] and @params['password']
       begin
-        SyncEngine::login_async(@params['login'], @params['password'], (url_for :action => :login_callback) )
+        SyncEngine::login(@params['login'], @params['password'], (url_for :action => :login_callback) )
         render :action => :wait
       rescue RhoError => e
           @msg = e.message
-      end  
+          render :action => :login, :query => {:msg => @msg}
+      end
     else
-      @msg = "You entered an invalid login/password, please try again." unless @msg.length
-      render :action => :login, :query => {:msg => @msg}
-      
+        @msg = "You entered an invalid login/password, please try again." unless @msg.length    
+        render :action => :login, :query => {:msg => @msg}
     end
   end
     
-  def do_login_old
-    success = 0
-    @msg = ""
-    if @params['login'] and @params['password']
-      begin
-        success = SyncEngine::login(@params['login'], @params['password'])
-      rescue RhoError => e
-          @msg = e.message
-      end  
-    end
-    
-    if success > 0
-      # run sync if we were successful
-      SyncEngine::dosync
-      redirect Rho::RhoConfig.start_path
-    else
-      @msg = "You entered an invalid login/password, please try again." unless @msg.length
-      render :action => :login, :query => {:msg => @msg}
-    end
-  end
-  
   def logout
     SyncEngine::logout
     @msg = "You have been logged out."
