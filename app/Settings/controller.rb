@@ -13,7 +13,38 @@ class SettingsController < Rho::RhoController
     render :action => :login
   end
 
+  def login_callback
+    errCode = @params['error_code'].to_i
+    if errCode == 0
+      # run sync if we were successful
+      WebView.navigate Rho::RhoConfig.start_path
+      SyncEngine::dosync
+    else
+      @msg = @params['error_message']
+      if @msg == nil or @msg.length == 0 
+        @msg = RhoError.new(errCode).message
+      end
+        
+      render :action => :login, :query => {:msg => @msg}
+    end  
+  end
+
   def do_login
+    if @params['login'] and @params['password']
+      begin
+        SyncEngine::login_async(@params['login'], @params['password'], (url_for :action => :login_callback) )
+        render :action => :wait
+      rescue RhoError => e
+          @msg = e.message
+      end  
+    else
+      @msg = "You entered an invalid login/password, please try again." unless @msg.length
+      render :action => :login, :query => {:msg => @msg}
+      
+    end
+  end
+    
+  def do_login_old
     success = 0
     @msg = ""
     if @params['login'] and @params['password']
