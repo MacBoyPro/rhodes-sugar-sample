@@ -34,7 +34,7 @@ class SettingsController < Rho::RhoController
       begin
         SyncEngine::login(@params['login'], @params['password'], (url_for :action => :login_callback) )
         render :action => :wait
-      rescue RhoError => e
+      rescue Rho::RhoError => e
           @msg = e.message
           render :action => :login, :query => {:msg => @msg}
       end
