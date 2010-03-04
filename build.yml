@@ -1,7 +1,7 @@
 --- 
 name: rhodes-sugar-sample
 bbver: 4.6
-sdk: /Users/lars/Dev/code/rhomobile/rhodes
+sdk: /Users/macboypro/src/rhodes 
 applog: rholog.txt
 version: 0.2.0
 vendor: rhomobile
