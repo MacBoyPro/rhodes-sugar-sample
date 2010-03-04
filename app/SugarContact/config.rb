@@ -1,3 +1,3 @@
 require 'rho'
 
-Rho::RhoConfig::add_source("SugarContact", {"url"=>"#{Rho::RhoConfig.syncserver}SugarContacts", "source_id"=>7636})
+Rho::RhoConfig::add_source("SugarContact", {"url"=>"SugarContact", "source_id"=>7636})
