@@ -15,6 +15,7 @@ class SettingsController < Rho::RhoController
   end
 
   def login_callback
+    puts "-------------------------------- login_callback"
     errCode = @params['error_code'].to_i
     if errCode == 0
       # run sync if we were successful
@@ -32,12 +33,15 @@ class SettingsController < Rho::RhoController
   end
 
   def do_login
+    puts "-------------------------------- do_login"
+    puts "=== here"
     if @params['login'] and @params['password']
       begin
         SyncEngine::login(@params['login'], @params['password'], (url_for :action => :login_callback) )
         render :action => :wait
       rescue Rho::RhoError => e
           @msg = e.message
+	  puts "---------- ***: #{@msg}"
           render :action => :login, :query => {:msg => @msg}
       end
     else

@@ -3,4 +3,6 @@ bin/*
 build.yml
 .project
 rholog.txt
-sim-public
+sim-public/
+RhoBundle/
+preverified/
